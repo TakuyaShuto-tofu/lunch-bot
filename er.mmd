@@ -1,0 +1,38 @@
+erDiagram
+
+%%テーブルのリレーション
+users || -- o{ stores: "1:n"
+users || -- o{ relationships: "1:n"  
+relationships }o -- || users2: "1:n"
+
+%%以下、テーブル詳細
+%%ユーザーに関する情報
+users {
+string id
+string name
+string email
+string password
+}
+
+%%行った店に関する情報
+stores {
+string id
+date date
+string store_name
+string comment
+}
+
+%%フォロー機能のための中間テーブル
+relationships{
+string id
+string follow_id
+string foroower_id
+}
+
+%%ログインユーザーから見た他のひとたち
+users2 {
+string id
+string name
+string email
+string password
+}
