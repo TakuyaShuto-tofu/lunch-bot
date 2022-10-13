@@ -1,2 +1,29 @@
-<h1>test</h1>
-<%= link_to "ログイン", user_session_path %>
+<div class="top_page">
+  <% if user_signed_in? %>
+    <h5 class="subtitle">ようこそ!</h5>
+    <h5 class="subtitle"> メールアドレス： <%= current_user.email %>さん </h5>
+    <%= button_to "ログアウトする", destroy_user_session_path, method: :delete %>
+  <% else %>
+    <div class="login">
+      <h5 class="login_message"> 現在ログインしていません </h5>
+      <div class="login_form">
+        <%= link_to "ログインする", new_user_session_path, class: 'login_btn' %>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<h1>ランチに行ったお店の実績を管理するページ</h1>
+<%# 実績をテーブル形式で表示 %>
+<table class="table">
+  <tr class="column">
+    <th>ジャンル</th>
+    <th>商品名</th>
+    <th>個数</th>
+  </tr>
+  <tr class="data">
+    <td>2022/10/05</td>
+    <td>吉野家</td>
+    <td>牛丼並、美味しい</td>
+  </tr>
+</table>
