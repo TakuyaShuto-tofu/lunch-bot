@@ -1,0 +1,12 @@
+<h1>サービス紹介</h1>
+<p>本サービスの紹介を書く</p>
+<% if user_signed_in? %>
+  <p>ログインしないと表示されないコンテンツ</p>
+<% else %>
+  <div class="login_form">
+    <%= link_to "ログインする", new_user_session_path, class: 'login_btn' %>
+  </div>
+  <div class="sign_up_form">
+    <%= link_to "新規登録する", new_user_registration_path, class: 'sign_up_btn' %>
+  </div>
+<% end %>
