@@ -16,10 +16,10 @@
   </head>
 
   <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-md navbar-light bg-light">
       <div class="container-fluid">
         <%= link_to root_path, class: "navbar-brand" do %>
-          <img src="https://storage.googleapis.com/studio-design-asset-files/projects/XKOk6jY4W4/s-1010x321_v-fs_webp_95a566c6-a27d-44fd-89f2-5323fa7b1b76_small.webp" alt=""  height="24" class="d-inline-block align-text-top">
+          <img src="https://jitanda.com/j/j457_8/tnimg_j457_8.png" alt=""  height="24" class="d-inline-block align-text-top">
         <% end %>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -32,13 +32,13 @@
 
             <% if user_signed_in? %>
               <li class="nav-item">
-                <%= link_to "実績一覧", stores_path, class: "nav-link" %>
-              </li>
-              <li class="nav-item">
-                <%= link_to "ログアウト", destroy_user_session_path, data: {turbo_method: :delete}, class: "nav-link" %>
+                <%= link_to "訪問履歴", stores_path, class: "nav-link" %>
               </li>
               <li class="nav-item">
                 <%= link_to "お店を決める", searches_path, class: "nav-link" %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "ログアウト", destroy_user_session_path, data: {turbo_method: :delete, turbo_confirm: "ログアウトしますか？"}, class: "nav-link" %>
               </li>
               <li class="nav-item">
                 <%= link_to "マイページ", mypages_path, class: "nav-link" %>

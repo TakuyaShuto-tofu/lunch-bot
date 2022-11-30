@@ -1,0 +1,90 @@
+@charset "UTF-8";
+
+.email {
+  width: 100%;
+  height: 40px;
+  border-style: solid;
+  border-width: 2px;
+  border-color: #adb5bd;
+  border-radius: 5px;
+}
+
+.password {
+  width: 100%;
+  height: 40px;
+  border-style: solid;
+  border-width: 2px;
+  border-color: #adb5bd;
+  border-radius: 5px;
+}
+
+.session_form {
+  border-style: solid;
+  border-width: 2px;
+  border-color: #adb5bd;
+  width: 50%;
+  border-radius: 10px;
+  padding: 20px;
+  background-color: #f7f7f7;
+}
+
+.form {
+  display: flex;
+  justify-content: center;
+  margin-top: 10%;
+}
+
+.field_form {
+  width: 70%;
+  margin: 0 auto;
+  margin-bottom: 15px;
+}
+
+.actions {
+  width: 30%;
+  margin: 0 auto;
+  margin-bottom: 15px;
+}
+
+.actions_login_btn {
+  width: 100%;
+  height: 40px;
+  color: #ffffff;
+  border-style: solid;
+  border-width: 2px;
+  border-color: #adb5bd;
+  border-radius: 5px;
+  background-color: #096ae9;
+}
+
+.check_box {
+  border-style: solid;
+  border-width: 2px;
+  border-color: #adb5bd;
+  margin-right: 5px;
+}
+
+.sign_up_path {
+  color: #096ae9;
+}
+
+.password_path {
+  color: #096ae9;
+  font-size: 12px;
+  text-decoration: none;
+}
+
+.forget_password {
+  width: 70%;
+  margin: 0 auto;
+  margin-bottom: 15px;
+}
+
+.form_title {
+  color: #096ae9;
+  font-size: 12px;
+}
+
+.check_box_title {
+  display: flex;
+}

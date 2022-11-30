@@ -1,2 +1,27 @@
-<h1>マイページ</h1>
-<p>ログインユーザーの情報を表示・編集するページ</p>
+<div class="form">
+  <div class="session_form">
+    <div class="email_wrap">
+      <p>メールアドレス：</p>
+      <div class="current_user_email">
+        <%= current_user.email %>
+      </div>
+    </div>
+    <div class="email_change">
+      <%= link_to "メールアドレスを変更する", edit_user_registration_path, class: "form_title" %>
+    </div>
+    <br>
+    <div class="company_mypage">
+      <span class="mypage_tag">ログインパスワード：＊＊＊＊＊＊</span>
+    </div>
+    <div class="password_change">
+      <%= link_to "パスワードを変更する", edit_user_registration_path, class: "form_title" %>
+    </div>
+    <br>
+    <div class="visit_wrap">
+      <div class="visit">
+        <p>訪問した回数：</p>
+        <%# TODO:訪問回数を動的に取得する %>
+      </div>
+    </div>
+  </div>
+</div>

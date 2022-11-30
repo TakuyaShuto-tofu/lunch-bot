@@ -1,18 +1,15 @@
 @charset "UTF-8";
-.column {
-  color: black;
-  font-size: 10px;
+
+.history {
+  font-family: 'Ubuntu Mono', monospace;
+  background-image: image-url("ddd.jpg");
+  background-repeat: no-repeat;
+  height: 700px;
+  color: azure;
+  background-color: #2418189c;
 }
 
-.data {
-  font-size: 10px;
-  text-align: center;
-}
-
-.data td {
-  padding: 10px 0;
-}
-
-.table {
-  width: 100%;
+.aaa {
+  color: #e8e8e89c;
+  background-color: #e8e8e89c;
 }

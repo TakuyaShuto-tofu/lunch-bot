@@ -52,7 +52,8 @@ gem "sassc-rails"
 gem "devise"
 
 gem "pry-rails"
-
+gem "dotenv-rails"
+gem "google_places"
 
 
 group :development, :test do

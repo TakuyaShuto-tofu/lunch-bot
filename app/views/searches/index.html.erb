@@ -1,2 +1,32 @@
-<h1>ランチに行く店を決めるページ</h1>
+<div class="input-group w-25　search-box center-block">
+  <%= form_with url: searches_path, method: :get, local: true do |f| %>
+  <div class="input-group">
+      <%= f.text_field :keyword, value: params[:keyword], class: "form-control", placeholder: "キーワードを入力" %>
+      <%= f.submit '検索', class: "btn btn btn-success" %>
+      <%= f.hidden_field :lat, id: "lat" %>
+      <%= f.hidden_field :lng, id: "lng" %>
+  </div>
+  <% end %>
+</div>
+<br>
+<h3 class="lunch_top">今日のランチはこちら</h3>
+<p><%= @spot&.name %></p>
+
+<script>
+function success(pos){
+  const lat = pos.coords.latitude;
+  const lng = pos.coords.longitude;
+
+  $('#loc').text(`緯度：${lat} 経度：${lng}`);
+  $('#lat').val(lat)
+  $('#lng').val(lng)
+}
+
+function fail(pos){
+  alert('位置情報の取得に失敗しました。エラーコード：');
+}
+
+navigator.geolocation.getCurrentPosition(success,fail);
+
+</script>
 
