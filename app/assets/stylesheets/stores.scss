@@ -2,14 +2,25 @@
 
 .history {
   font-family: 'Ubuntu Mono', monospace;
-  background-image: image-url("ddd.jpg");
+  // background-image: image-url("ddd.jpg");
   background-repeat: no-repeat;
   height: 700px;
-  color: azure;
-  background-color: #2418189c;
+  // color: azure;
+  // background-color: #2418189c;
 }
 
-.aaa {
-  color: #e8e8e89c;
-  background-color: #e8e8e89c;
+.top_page_btn {
+  display: flex;
+  justify-content:center ;
+  background-color: azure;
+  width: 20%;
+  height: 50px;
+  border-radius: 5px;
+  align-items: center;
+  margin: 10px;
+  border-style: solid;
+  border-width: 2px;
+  border-color: #adb5bd;
+  color: #e5530e;
+  text-decoration: none;
 }
