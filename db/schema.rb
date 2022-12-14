@@ -12,18 +12,23 @@
 
 ActiveRecord::Schema[7.0].define(version: 2022_10_21_024222) do
   create_table "relationships", force: :cascade do |t|
-    t.string "followed_id"
-    t.string "follower_id"
+    t.integer "followed_id", null: false
+    t.integer "follower_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["followed_id", "follower_id"], name: "index_relationships_on_followed_id_and_follower_id", unique: true
+    t.index ["followed_id"], name: "index_relationships_on_followed_id"
+    t.index ["follower_id"], name: "index_relationships_on_follower_id"
   end
 
   create_table "stores", force: :cascade do |t|
+    t.integer "user_id", null: false
     t.date "date"
     t.string "store_name"
     t.string "comment"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_stores_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -38,4 +43,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_21_024222) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "relationships", "users", column: "followed_id"
+  add_foreign_key "relationships", "users", column: "follower_id"
+  add_foreign_key "stores", "users"
 end

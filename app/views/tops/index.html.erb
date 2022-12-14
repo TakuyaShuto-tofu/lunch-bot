@@ -1,7 +1,6 @@
 <div class="top_page">
   <% if user_signed_in? %>
-    <h5 class="subtitle">ようこそ!</h5>
-    <h5 class="subtitle"> ログインユーザー： <%= current_user.email %>さん </h5>
+    <h5 class="subtitle">ようこそ<%= current_user.email %>さん </h5>
   <% else %>
     <div class="login">
       <h5 class="login_message"> 現在ログインしていません </h5>
@@ -12,8 +11,16 @@
   <% end %>
 </div>
 
-<h1>タイムライン</h1>
-<p>右側にフォロー中一覧を表示（直近フォロー５件を表示）</p>
-<div class="login_form">
-  <%= link_to "実績一覧を確認する", stores_path, class: 'login_btn' %>
+<h3>タイムライン</h3>
+<div class="card_wrap">
+  <% @stores.each do |store| %>
+    <div class="card card_content" style="width: 18rem;">
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">ユーザー名：<%= store.user.email %></li>
+        <li class="list-group-item">日付：<%= store.date %></li>
+        <li class="list-group-item">店名：<%= store.store_name %></li>
+        <li class="list-group-item">感想：<%= store.comment %></li>
+      </ul>
+    </div>
+  <% end %>
 </div>

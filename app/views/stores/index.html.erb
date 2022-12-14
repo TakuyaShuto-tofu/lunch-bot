@@ -1,36 +1,27 @@
 <div class="history">
-  <%# 実績をテーブル形式で表示 %>
-  <table class="table aaa">
+  <table class="table table-hover">
     <thead>
       <tr>
-        <th scope="col">件数</th>
         <th scope="col">日付</th>
         <th scope="col">店名</th>
         <th scope="col">コメント</th>
+        <th></th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <th scope="row">1</th>
-        <td>2022/10/05</td>
-        <td>吉野家</td>
-        <td>牛丼並美味しい</td>
-      </tr>
-      <tr>
-        <th scope="row">2</th>
-        <td>2022/10/06</td>
-        <td>マクドナルド</td>
-        <td>ポテト美味しい</td>
-      </tr>
-      <tr>
-        <th scope="row">3</th>
-        <td>2022/10/07</td>
-        <td>ふくやラーメン</td>
-        <td>お腹いっぱい</td>
-      </tr>
+      <% @stores.each do |store| %>
+        <tr>
+          <td><%= store.date %></td>
+          <td><%= store.store_name %></td>
+          <td><%= store.comment %></td>
+          <td><%= link_to "編集", edit_store_path(store) %></td>
+          <td><%= link_to "削除", store_path(store), data: {turbo_method: :delete, turbo_confirm: "削除しますか？"} %></td>
+        </tr>
+      <% end %>
     </tbody>
   </table>
   <div class="to_top_page">
-    <%= link_to "トップページに戻る", tops_path, class: 'top_page_btn' %>
+    <%= link_to "実績を追加する", new_store_path, class: 'top_page_btn' %>
   </div>
 </div>

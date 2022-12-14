@@ -1,6 +1,6 @@
-<div class="input-group w-25　search-box center-block">
+<div class="input-group justify-content-center">
   <%= form_with url: searches_path, method: :get, local: true do |f| %>
-  <div class="input-group">
+  <div class="input-group wrap">
       <%= f.text_field :keyword, value: params[:keyword], class: "form-control", placeholder: "キーワードを入力" %>
       <%= f.submit '検索', class: "btn btn btn-success" %>
       <%= f.hidden_field :lat, id: "lat" %>
@@ -9,8 +9,22 @@
   <% end %>
 </div>
 <br>
-<h3 class="lunch_top">今日のランチはこちら</h3>
-<p><%= @spot&.name %></p>
+<h3 class="lunch_top">今日のランチはこちら → <span><%= @spot&.name %></span></h3>
+<p>住所：</p>
+<p><%= @spot&.vicinity %></p>
+<p>電話番号：</p>
+<p><%= @spot&.formatted_phone_number %></p>
+<%# <p><%= @spot&.weekday_text %>
+<p><%= @spot&.url %></p>
+<p>営業時間</p>
+<p>評価（0~5）：</p>
+<p><%= @spot&.rating %></p>
+<p>クチコミ：</p>
+<%# 表示エラーになる原因を調査 %>
+<%# <p><%= @spot&.text %></p> %>
+
+<%# googlemapを埋め込む %>
+<iframe src= "<%= @spot&.url %>" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 
 <script>
 function success(pos){

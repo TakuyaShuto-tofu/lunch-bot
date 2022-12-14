@@ -1,0 +1,30 @@
+<%= form_with(model: @store, local: true) do |f| %>
+  <div class="form">
+    <div class="session_form">
+      <div class="field_form">
+        <%= f.label :date, class: "form_title" %><br />
+        <%= f.date_field :date, autofocus: true, autocomplete: "date", class: "email" %>
+      </div>
+
+      <div class="field_form">
+        <%= f.label :店名, class: "form_title" %><br />
+        <%= f.text_field :store_name, autocomplete: "store_name", class: "password" %>
+      </div>
+
+      <div class="field_form">
+        <%= f.label :コメント, class: "form_title" %><br />
+        <%= f.text_field :comment, autocomplete: "comment", class: "password" %>
+      </div>
+
+      <div class="actions">
+        <%= f.submit "登録", class: "actions_login_btn" %>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="to_top_page">
+    <%= link_to "訪問履歴一覧に戻る", stores_path, class: 'top_page_btn' %>
+  </div>
+
+<% end %>

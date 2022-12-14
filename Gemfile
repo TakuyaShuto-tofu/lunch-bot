@@ -54,6 +54,8 @@ gem "devise"
 gem "pry-rails"
 gem "dotenv-rails"
 gem "google_places"
+gem "rack-cors"
+
 
 
 group :development, :test do

@@ -1,12 +1,10 @@
 <div class="home">
   <div class="service_title">Lunch Bot</div>
-  <%# <h2 class="about_service">サービスの紹介</h2> %>
   <p class="service_content">LunchBotはあなたに代わってランチの行き先を決める、ほんの少し役に立つサービスです！<br>
       キーワード（例：ラーメン）を入力してクリックするだけで、あなたの近くのお店をピックアップします。<br>
       新規登録からアカウントを作成し、サービスを使ってみましょう！
   </p>
   <% if user_signed_in? %>
-    <p class="home_content">以下、ログインしないと表示されないコンテンツ</p>
   <% else %>
     <div class="form_block">
       <div class="login_form">
