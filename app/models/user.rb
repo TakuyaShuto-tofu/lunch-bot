@@ -14,12 +14,12 @@ class User < ApplicationRecord
   has_many :followers, through: :reverse_of_relationships, source: :follower
 
   #フォローした時の処理
-  def follow(user_id)
-    relationships.create(followed_id: user_id)
+  def follow(user)
+    relationships.create(followed: user)
   end
   #フォローを外す時の処理
-  def unfollow(user_id)
-    relationships.find_by(followed_id: user_id).destroy
+  def unfollow(user)
+    followings.delete(user)
   end
   #フォローしているか判定
   def following?(user)

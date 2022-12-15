@@ -1,0 +1,16 @@
+<h1>ユーザーを見つけるページ</h1>
+<div class="find_page">
+  <% @users.each do |user| %>
+    <div class="card" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title"><%= user.email %></h5>
+        <p class="card-text">自己紹介文を書く</p>
+        <% if current_user.following?(user) %>
+          <%= link_to "フォロー中", user_relationship_path(user), data: {turbo_method: :delete, turbo_confirm: "フォローを解除しますか？"} %>
+        <% else %>
+          <%= link_to "フォローする", user_relationship_path(user), data: {turbo_method: :post } %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>
