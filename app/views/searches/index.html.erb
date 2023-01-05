@@ -1,46 +1,48 @@
-<div class="input-group justify-content-center">
-  <%= form_with url: searches_path, method: :get, local: true do |f| %>
-  <div class="input-group wrap">
-      <%= f.text_field :keyword, value: params[:keyword], class: "form-control", placeholder: "キーワードを入力" %>
-      <%= f.submit '検索', class: "btn btn btn-success" %>
-      <%= f.hidden_field :lat, id: "lat" %>
-      <%= f.hidden_field :lng, id: "lng" %>
+<div class="search">
+  <h4>キーワードを入力して検索（例：ラーメン、コーヒーetc）</h4>
+  <div class="input-group">
+    <%= form_with url: searches_path, method: :get, local: true do |f| %>
+    <div class="input-group wrap">
+        <%= f.text_field :keyword, value: params[:keyword], class: "form-control", placeholder: "キーワードを入力" %>
+        <%= f.submit '検索', class: "btn btn btn-success" %>
+        <%= f.hidden_field :lat, id: "lat" %>
+        <%= f.hidden_field :lng, id: "lng" %>
+    </div>
+    <% end %>
   </div>
-  <% end %>
+  <br>
+  <h5 class="lunch_top">今日のランチはこちら↓↓</h5>
+  <%# ここから結果をカード表示にする %>
+  <div class="card" style="width: 25rem;">
+    <div class="card-header">
+      お店の情報
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">店名：<%= @spot&.name %></li>
+      <li class="list-group-item">住所：<%= @spot&.vicinity %></li>
+      <li class="list-group-item">電話番号：<%= @spot&.formatted_phone_number %></li>
+      <li class="list-group-item">評価（0~5）：<%= @spot&.rating %></li>
+    </ul>
+  </div>
+  <br>
+  <iframe src="https://maps.google.com/?q=<%= @spot&.name %>&output=svembed" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+  <script>
+  function success(pos){
+    const lat = pos.coords.latitude;
+    const lng = pos.coords.longitude;
+
+    $('#loc').text(`緯度：${lat} 経度：${lng}`);
+    $('#lat').val(lat)
+    $('#lng').val(lng)
+  }
+
+  function fail(pos){
+    alert('位置情報の取得に失敗しました。エラーコード：');
+  }
+
+  navigator.geolocation.getCurrentPosition(success,fail);
+
+  </script>
+
 </div>
-<br>
-<h3 class="lunch_top">今日のランチはこちら → <span><%= @spot&.name %></span></h3>
-<p>住所：</p>
-<p><%= @spot&.vicinity %></p>
-<p>電話番号：</p>
-<p><%= @spot&.formatted_phone_number %></p>
-<%# <p><%= @spot&.weekday_text %>
-<p><%= @spot&.url %></p>
-<p>営業時間</p>
-<p>評価（0~5）：</p>
-<p><%= @spot&.rating %></p>
-<p>クチコミ：</p>
-<%# 表示エラーになる原因を調査 %>
-<%# <p><%= @spot&.text %></p> %>
-
-<%# googlemapを埋め込む %>
-<iframe src= "<%= @spot&.url %>" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-
-<script>
-function success(pos){
-  const lat = pos.coords.latitude;
-  const lng = pos.coords.longitude;
-
-  $('#loc').text(`緯度：${lat} 経度：${lng}`);
-  $('#lat').val(lat)
-  $('#lng').val(lng)
-}
-
-function fail(pos){
-  alert('位置情報の取得に失敗しました。エラーコード：');
-}
-
-navigator.geolocation.getCurrentPosition(success,fail);
-
-</script>
-

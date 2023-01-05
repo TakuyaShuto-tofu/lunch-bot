@@ -14,7 +14,33 @@
  *= require_self
  */
 @import 'bootstrap';
+@import 'font-awesome';
 
 .navbar-expand-md .navbar-nav .nav-link {
   color: #e5530e;
+}
+
+.card {
+  border-color: #adb5bd;
+  border-style: solid;
+  border-width: 2px;
+  margin: 1%;
+}
+
+.card-title {
+  color: #e5530e;
+  text-decoration: none;
+}
+
+.follow_link {
+  color: #e5530e;
+  text-decoration: none;
+}
+
+// .list-group-item {
+//   background-color: rgb(235, 255, 255);
+// }
+
+.card_content {
+  width: 100%;
 }

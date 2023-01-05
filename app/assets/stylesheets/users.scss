@@ -1,0 +1,30 @@
+@charset "UTF-8";
+
+.edit_user_info {
+  display: flex;
+}
+
+.find_page {
+  // font-family: 'Ubuntu Mono', monospace;
+  // background-image: image-url("pastel_2.jpg");
+  // background-repeat: no-repeat;
+  background-color: rgba(66, 130, 227, 0.25);
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.edit_user_btn {
+  display: flex;
+  justify-content:center ;
+  background-color: azure;
+  width: 25%;
+  height: 40px;
+  border-radius: 5px;
+  align-items: center;
+  margin: 10px;
+  border-style: solid;
+  border-width: 2px;
+  border-color: #adb5bd;
+  color: #e5530e;
+  text-decoration: none;
+}

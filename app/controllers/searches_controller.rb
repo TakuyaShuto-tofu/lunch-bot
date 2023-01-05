@@ -3,8 +3,6 @@ class SearchesController < ApplicationController
   after_action :allow_iframe, only: [:index]
 
   def index
-    # keyword = params[:keyword]
-
     #ここに検索するロジックを書く→googleplaces
     @client = GooglePlaces::Client.new(ENV["GOOGLE_API_KEY"])
     if params[:lat].present? && params[:lng].present? && params[:keyword].present?
@@ -16,7 +14,8 @@ class SearchesController < ApplicationController
 
   private
   def allow_iframe
-    url= "#{@spot&.url}"#if文使って書く方がいい？
+    url= "#{@spot&.url}"#if文使って書く方がいい
+    url = "https://www.google.com"
     response.headers['X-Frame-Options'] = "ALLOW-FROM #{url}"
     response.headers['Content-Security-Policy'] = "frame-ancestors #{url}"
   end

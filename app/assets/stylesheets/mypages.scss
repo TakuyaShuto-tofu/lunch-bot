@@ -1,9 +1,24 @@
 @charset "UTF-8";
 
+.mypage{
+  display: flex;
+  justify-content: center;
+  background-color: rgba(66, 130, 227, 0.25);
+}
+
 .email_wrap {
   display: flex;
 }
 
 .visit_wrap {
   display: flex;
+}
+
+.mypage_profile_image {
+  height: 400px;
+}
+
+.card-link {
+  color: #e5530e;
+  text-decoration: none;
 }

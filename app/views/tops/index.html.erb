@@ -1,26 +1,32 @@
-<div class="top_page">
-  <% if user_signed_in? %>
-    <h5 class="subtitle">ようこそ<%= current_user.email %>さん </h5>
-  <% else %>
-    <div class="login">
-      <h5 class="login_message"> 現在ログインしていません </h5>
-      <div class="login_form">
-        <%= link_to "ログインする", new_user_session_path, class: 'login_btn' %>
+<div class="tops">
+  <div class="top_page">
+    <% if user_signed_in? %>
+      <h5 class="subtitle">ようこそ<%= current_user.name %>さん </h5>
+    <% else %>
+      <div class="login">
+        <h5 class="login_message"> 現在ログインしていません </h5>
+        <div class="login_form">
+          <%= link_to "ログインする", new_user_session_path, class: 'login_btn' %>
+        </div>
       </div>
-    </div>
-  <% end %>
-</div>
+    <% end %>
+  </div>
 
-<h3>タイムライン</h3>
-<div class="card_wrap">
-  <% @stores.each do |store| %>
-    <div class="card card_content" style="width: 18rem;">
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item">ユーザー名：<%= store.user.email %></li>
-        <li class="list-group-item">日付：<%= store.date %></li>
-        <li class="list-group-item">店名：<%= store.store_name %></li>
-        <li class="list-group-item">感想：<%= store.comment %></li>
-      </ul>
-    </div>
-  <% end %>
+  <h3>タイムライン</h3>
+  <div class="card_wrap">
+    <% @stores.each do |store| %>
+      <div class="card card_content" style="width: 25rem;">
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item"><%= image_tag store.user.profile_image.url, class: "profile_image" %>
+            <span class="user_name"><%= store.user.name %></span>
+          </li>
+        </ul>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">日付：<%= store.date %></li>
+          <li class="list-group-item">店名：<%= store.store_name %></li>
+          <li class="list-group-item">感想：<%= store.comment %></li>
+        </ul>
+      </div>
+    <% end %>
+  </div>
 </div>

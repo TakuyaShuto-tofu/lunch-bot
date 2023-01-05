@@ -3,6 +3,9 @@ Rails.application.routes.draw do
   #controllers:{registrations:'registrations', sessions: :sessions}
   #root 'コントローラー名#アクション名'でサーバーを立てた最初の画面を設定
   resources :users do
+    member do
+      get :follows, :followers
+    end
     resource :relationship, only: [:create, :destroy]
   end
   

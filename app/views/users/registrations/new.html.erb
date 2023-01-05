@@ -2,7 +2,22 @@
   <%= render "users/shared/error_messages", resource: resource %>
   <div class="form">
     <div class="session_form">
-        <div class="field_form">
+      <div class="field_form">
+        <%= f.label :ユーザーネーム, class: "form_title" %><br />
+        <%= f.text_field :name, autofocus: true, autocomplete: "name", class: "email" %>
+      </div>
+
+      <div class="field_form">
+        <%= f.label :プロフィール画像, class: "form_title" %><br />
+        <%= f.file_field :profile_image, autofocus: true, autocomplete: "profile_image" %>
+      </div>
+
+      <div class="field_form">
+        <%= f.label :一言, class: "form_title" %><br />
+        <%= f.text_field :self_introduction, autofocus: true, autocomplete: "name", class: "email" %>
+      </div>
+
+      <div class="field_form">
         <%= f.label :メールアドレス, class: "form_title" %><br />
         <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "email" %>
       </div>

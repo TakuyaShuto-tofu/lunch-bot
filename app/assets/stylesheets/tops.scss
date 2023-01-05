@@ -3,4 +3,21 @@
 .card_wrap {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
+}
+
+.user_name {
+  margin-left: 1rem;
+}
+
+.tops {
+  // font-family: 'Ubuntu Mono', monospace;
+  // background-image: image-url("pastel.jpg");
+  // background-repeat: no-repeat;
+  background-color: rgba(66, 130, 227, 0.25);
+}
+
+.profile_image {
+  height: 30px;
+  width: 30px;
 }

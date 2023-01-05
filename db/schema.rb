@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_21_024222) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_04_093444) do
   create_table "relationships", force: :cascade do |t|
     t.integer "followed_id", null: false
     t.integer "follower_id", null: false
@@ -23,9 +23,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_21_024222) do
 
   create_table "stores", force: :cascade do |t|
     t.integer "user_id", null: false
-    t.date "date"
-    t.string "store_name"
-    t.string "comment"
+    t.date "date", null: false
+    t.string "store_name", null: false
+    t.string "comment", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_stores_on_user_id"
@@ -39,6 +39,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_21_024222) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "name"
+    t.string "profile_image"
+    t.string "self_introduction"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

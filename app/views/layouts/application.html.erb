@@ -18,7 +18,7 @@
   <body>
     <nav class="navbar navbar-expand-md navbar-light bg-light">
       <div class="container-fluid">
-        <%= link_to tops_path, class: "navbar-brand" do %>
+        <%= link_to root_path, class: "navbar-brand" do %>
           <img src="https://jitanda.com/j/j457_8/tnimg_j457_8.png" alt=""  height="24" class="d-inline-block align-text-top">
           LunchBot
         <% end %>
@@ -27,11 +27,10 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <%= link_to "サービス紹介", root_path, class: "nav-link" %>
-            </li>
-
             <% if user_signed_in? %>
+              <li class="nav-item">
+                <%= link_to "タイムライン", tops_path, class: "nav-link" %>
+              </li>
               <li class="nav-item">
                 <%= link_to "訪問履歴", stores_path, class: "nav-link" %>
               </li>
