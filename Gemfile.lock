@@ -167,6 +167,7 @@ GEM
     nokogiri (1.13.8-arm64-darwin)
       racc (~> 1.4)
     orm_adapter (0.5.0)
+    pg (1.4.5)
     popper_js (2.11.6)
     pry (0.14.1)
       coderay (~> 1.1)
@@ -286,6 +287,7 @@ DEPENDENCIES
   google_places
   importmap-rails
   jbuilder
+  pg
   pry-rails
   puma (~> 5.0)
   rack-cors
