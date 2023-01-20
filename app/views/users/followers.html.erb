@@ -1,1 +1,14 @@
-<h1>フォロワー一覧を表示する</h1>
+<h5>フォロワー一覧</h5>
+<%# フォロワーがいるか判定 %>
+<% if @user.followers.present? %>
+  <% @user.followers.each do |user| %>
+    <div class="card" style="width: 25rem;">
+      <div class="card-body">
+        <h5 class="card-title"><%= image_tag user.profile_image.url, class: "profile_image" %><%= user.name %></h5>
+        <p class="card-text"><%= user.self_introduction %></p>
+      </div>
+    </div>
+  <% end %>
+<% else %>
+  <p>フォロワーはいません</p>
+<% end %>

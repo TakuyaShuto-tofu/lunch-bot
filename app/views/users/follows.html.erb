@@ -1,12 +1,18 @@
-<h1>フォロー一覧を表示する</h1>
+<h5>フォロー一覧</h5>
 <%# フォローしている人がいるか判定 %>
 <% if @user.followings.present? %>
   <% @user.followings.each do |user| %>
-    <%= user.email %>
+    <div class="card" style="width: 25rem;">
+      <div class="card-body">
+        <h5 class="card-title"><%= image_tag user.profile_image.url, class: "profile_image" %><%= user.name %></h5>
+        <p class="card-text"><%= user.self_introduction %></p>
+      </div>
+    </div>
   <% end %>
 <% else %>
   <p>フォローしているユーザーはいません</p>
 <% end %>
+
 
 <%# フォローしている人がいれば、ループ処理して全員を表示 %>
 <%# フォローしている人がいなければ、テキストを表示 %>

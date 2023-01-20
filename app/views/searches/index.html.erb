@@ -1,40 +1,17 @@
-<div class="search">
-  <h4>キーワードを入力して検索（例：ラーメン、コーヒーetc）</h4>
-  <div class="input-group">
-    <%= form_with url: searches_path, method: :get, local: true do |f| %>
-    <div class="input-group wrap">
-        <%= f.text_field :keyword, value: params[:keyword], class: "form-control", placeholder: "キーワードを入力" %>
-        <%= f.submit '検索', class: "btn btn btn-success" %>
-        <%= f.hidden_field :lat, id: "lat" %>
-        <%= f.hidden_field :lng, id: "lng" %>
-    </div>
-    <% end %>
-  </div>
-  <br>
-  <h5 class="lunch_top">今日のランチはこちら↓↓</h5>
-  <%# ここから結果をカード表示にする %>
-  <div class="card" style="width: 25rem;">
-    <div class="card-header">
-      お店の情報
-    </div>
-    <ul class="list-group list-group-flush">
-      <li class="list-group-item">店名：<%= @spot&.name %></li>
-      <li class="list-group-item">住所：<%= @spot&.vicinity %></li>
-      <li class="list-group-item">電話番号：<%= @spot&.formatted_phone_number %></li>
-      <li class="list-group-item">評価（0~5）：<%= @spot&.rating %></li>
-    </ul>
-  </div>
-  <br>
-  <iframe src="https://maps.google.com/?q=<%= @spot&.name %>&output=svembed" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-
-  <script>
+<script>
   function success(pos){
     const lat = pos.coords.latitude;
     const lng = pos.coords.longitude;
 
+      console.log(lat)
+      console.log(lng)
+
     $('#loc').text(`緯度：${lat} 経度：${lng}`);
     $('#lat').val(lat)
     $('#lng').val(lng)
+
+    const btn = document.getElementById("search_btn")
+    btn.disabled = false
   }
 
   function fail(pos){
@@ -43,6 +20,49 @@
 
   navigator.geolocation.getCurrentPosition(success,fail);
 
-  </script>
+</script>
 
+
+<div class="search h-100">
+  <div class="container">
+    <%# <div class="row">キーワードを入力して検索（例：ラーメン、コーヒーetc）</div> %>
+    <div class="row justify-content-center">
+      <%= form_with url: searches_path, method: :get, local: true do |f| %>
+        <div class="row justify-content-center search_wrap">
+          <div class="col-6 col-sm-10 col-md-10 text-center">
+            <%= f.text_field :keyword, value: params[:keyword], class: "form-control search_box", placeholder: "キーワードを入力（例：ラーメン）" %>
+            <%= f.submit '検索', class: "col-sm-8 col-md-6 btn btn-md btn-primary search_btn", id:"search_btn", disabled:true %>          
+            <%= f.hidden_field :lat, id: "lat" %>
+            <%= f.hidden_field :lng, id: "lng" %>
+          </div>        
+        </div>
+      <% end %>
+    </div>
+    <br>
+    <div class="row justify-content-center">↓↓今日のランチはこちら↓↓</div>
+    <%# ここから結果をカード表示にする %>
+    <div class="row justify-content-center">
+      <div class="col-sm-10 col-md-8">
+        <div class="card text-center">
+          <ul class="list-group list-group-flush">
+            <li class="card text-white bg-secondary list-group-item">お店の情報</li>
+            <li class="list-group-item">店名：<%= @spot&.name %></li>
+            <li class="list-group-item">住所：<%= @spot&.vicinity %></li>
+            <li class="list-group-item">電話番号：<%= @spot&.formatted_phone_number %></li>
+            <li class="list-group-item">評価（0~5）：<%= @spot&.rating %></li>
+          </ul>
+        </div>
+      </div>
+      <br>
+      <div class="row justify-content-center">
+        <div class="col-sm-8 col-md-6">
+          <iframe src="https://maps.google.com/?q=<%= @spot&.name %>&ll=<%= "#{@spot&.lat},#{@spot&.lng}"%>&z=18&output=svembed" width=100% height=150% style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
+
+<%# if文を使って@spotがある時、の条件分岐を書く　@spotに値がある時、iframeを表示、ない時は何も表示しない %>
+<%# 検索部分のUIをこだわってみる %>
+<%# bootstrapを使ってレスポンシブ対応に %>
