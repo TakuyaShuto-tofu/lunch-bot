@@ -1,19 +1,21 @@
 databases:
-  - name: lunch_bot
+  - name: lunch_bot_production
     databaseName: lunch_bot_production
     user: lunch_bot
     region: singapore
 
 services:
   - type: web
-    name: lunch_bot
+    name: lunch_bot_production
     env: ruby
+    region: singapore
+    plan: free
     buildCommand: "./bin/render-build.sh"
     startCommand: "bundle exec puma -C config/puma.rb"
     envVars:
       - key: DATABASE_URL
         fromDatabase:
-          name: lunch_bot
+          name: lunch_bot_production
           property: connectionString
       - key: RAILS_MASTER_KEY
         sync: false
