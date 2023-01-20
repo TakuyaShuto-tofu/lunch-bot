@@ -3,6 +3,7 @@ databases:
     databaseName: lunch_bot_production
     user: lunch_bot
     region: singapore
+    plan: free
 
 services:
   - type: web
